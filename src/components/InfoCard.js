@@ -15,8 +15,8 @@ export default function InfoCard(props) {
             <p className='w-40'>{props.feelslike}&#176; C</p>
             </div>
             <div className='flex  px-6 justify-center space-x-20'>
-            <span className='w-40'>Wind Speed</span>
-            <p className='w-40'>{props.speed}m/s</p>
+            <span className='w-52'>Wind Speed</span>
+            <p className='w-52'>{props.speed}m/s</p>
             </div>
           
       
