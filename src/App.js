@@ -59,7 +59,7 @@ useEffect(()=>{
         
         <div className='flex items-center justify-center space-y-4 p-2 flex-col rounded-2xl md:w-[15rem] bg-[#202b3c] pt-5'>
           <input className='px-2 p-2 rounded-md text-black text-center' type="text"  placeholder='Enter a city' onChange={changecity}/>
-          <button onClick={handlesearch} className=' rounded-md bg-[#0b121e] w-20 '>Search</button>
+          <button onClick={handlesearch} className=' rounded-md bg-[#0b121e] w-20 p-2 '>Search</button>
         </div>
         <div className='rounded-2xl bg-gray-100 md:w-[20rem] pb-10 md:pb-0 mt-12 md:mt-0'> 
         <img className="w-32 mx-auto " src="image_processing20220801-17461-1qbptiv.png" alt="" />
