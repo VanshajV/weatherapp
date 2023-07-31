@@ -28,7 +28,7 @@ function App() {
       setData(parse.main.temp);
       setfeel(parse.main.feels_like)
       function cap(city){
-        const x=city.charAt(0).toUpperCase() + city.slice(1);
+        const x=city.charAt(0).toUpperCase() + city.slice("1");
         return x ;
         }
       setplace(cap(city))
