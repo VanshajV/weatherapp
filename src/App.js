@@ -80,7 +80,7 @@ function App() {
                 : <>
                   <div className='flex text-black items-center justify-between'>
                     <img className="w-32" src="image_processing20220801-17461-1qbptiv.png" alt="" />
-                    <h1 className='text-5xl mr-2'>{data}&#176;C</h1>
+                    <h1 className='text-5xl mr-2'>{Math.round(data)}&#176;C</h1>
                   </div>
 
                   <InfoCard title={place} CurrentTemp={data} feelslike={feel} speed={speed}></InfoCard>
