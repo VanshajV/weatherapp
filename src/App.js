@@ -14,17 +14,28 @@ function App() {
   const [feel, setfeel] = useState(null)
   const [place, setplace] = useState("Delhi")
   const [speed, setspeed] = useState(null)
+  const[loading,setLoading]=useState(true);
+
+  function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, 700));
+  }
 
   const getdetails = async () => {
+    setLoading(true)
+    await delay();
+    
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=3bbf64e69b6702ae5a44feaaff2e5d9d&units=metric`;
     let data = await fetch(url);
     let parse = await data.json()
     console.log(parse);
     if (parse.cod === "404" || city === "") {
+      setLoading(false)
       setData(null);
 
     }
     else {
+      setLoading(false)
+      console.log(parse);
       setData(parse.main.temp);
       setfeel(parse.main.feels_like)
       function cap(city){
@@ -65,7 +76,7 @@ function App() {
 
 
       <div className='bg-gradient-to-r h-[100%] from-[#545e68] to-[#293241]'>
-        <div className='h-[100vh]'>
+        <div className='min-h-[100vh]'>
           <h1 className='p-10 text-white text-3xl'>WeatherVista</h1>
           <div className='mx-auto w-[23rem] mt-10 md:w-[40rem]  text-white md:h-96 rounded-3xl p-4 flex flex-col md:flex-row bg-[#0b121e] justify-between '>
 
@@ -75,8 +86,9 @@ function App() {
             </div>
             <div className='p-4 rounded-2xl bg-gray-100 md:w-[22rem] pb-5 md:pb-0 mt-6 md:mt-0'>
               <div className='text-lg text-black flex justify-between'><span>{time}</span><div><span className='mr-2'>{day},</span><span>{date}</span></div></div>
-
-              {!data ? (<div className='h-32 py-10 md:py-28'><h1 className=' text-black text-4xl '>No Data found</h1><p className='text-black'>Please enter city name</p></div>)
+              {
+                loading===true ?(<div className='h-[270px] flex justify-center items-center'><h1 className='text-black'><img src="tail-spin.svg" alt="" /></h1></div>) : <>
+                {!data ? (<div className='h-32 py-10 md:py-28'><h1 className=' text-black text-4xl '>No Data found</h1><p className='text-black'>Please enter city name</p></div>)
                 : <>
                   <div className='flex text-black items-center justify-between'>
                     <img className="w-32" src="image_processing20220801-17461-1qbptiv.png" alt="" />
@@ -85,7 +97,9 @@ function App() {
 
                   <InfoCard title={place} CurrentTemp={data} feelslike={feel} speed={speed}></InfoCard>
                 </>
+              }</>
               }
+              
             </div>
 
           </div>
